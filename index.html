@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>Mac y iPad para empresas | Mobility Global México y Colombia</title>
 <meta name="description" content="Equipos Mac y iPad para tu empresa, entregados configurados con tu correo, tus apps y tus políticas de seguridad. Cotización con facturación CFDI o DIAN. Mobility Global, integrador de TI en México y Colombia.">
 <!-- DOMINIO: cambiar aquí y en los dos "returnURL" si la landing se publica en otro subdominio -->
@@ -56,209 +59,192 @@ gtag('config', 'AW-18420994186');
 ]
 }
 </script>
-
 <style>
-/* Identidad de Mobility Global (misma base que las landings de Jabra).
-   A propósito NO se imita el diseño, la tipografía ni los elementos gráficos de apple.com. */
+/* Landing Mac y iPad de Mobility Global.
+   Diseño: base clara con fotos (propuesta de Alejandro), colores del logo de Mobility.
+   Tipografía Inter: fuente propia, a propósito distinta de la de apple.com.
+   Fotos de uso libre (Unsplash). Cambiar por fotos oficiales de Apple solo con autorización. */
 :root{
-/* Cuerpo: tonos aluminio (blanco, plata, grafito). Acentos: verde y azul petróleo del logo de Mobility Global. */
---bg:#ffffff; --surface:#f3f4f6; --surface2:#ffffff; --line:#d8dbe1;
---txt:#16181d; --muted:#4f5763; --dim:#6f7783;
---accent:#86C440; --accent-dk:#74B030; --accent-txt:#1A6276;
---ok:#12805c;
---r:16px; --rs:10px;
---max:1180px;
+--bg:#ffffff; --surface:#f4f6f2; --surface2:#ffffff; --line:#dfe5e1;
+--txt:#0f2427; --muted:#4b5d5f; --dim:#6c7d7f;
+--accent:#86C440; --accent-dk:#74B030; --accent-txt:#3f7d12; --tint:#eef6e4;
+--deep:#0c2b2f; --ok:#12805c;
+--r:22px; --rs:12px; --max:1160px;
 }
-/* Franjas oscuras (header, hero, pie, WhatsApp): azul petróleo profundo para que el logo blanco se lea */
-.dark{
---bg:#07171c; --surface:#0c2229; --surface2:#123039; --line:#1f4551;
---txt:#eef5f6; --muted:#9bb5bc; --dim:#6d8a92; --accent-txt:#92D050; --ok:#92D050;
-background:var(--bg);color:var(--txt);
-}
-*{box-sizing:border-box;margin:0;padding:0}
+/* paleta para las piezas oscuras (ventana de WhatsApp y asistente) */
+.dark{--bg:#07171c;--surface:#0c2229;--surface2:#123039;--line:#1f4551;--txt:#eef5f6;--muted:#9bb5bc;--dim:#6d8a92;--accent-txt:#92D050;--ok:#92D050;background:var(--bg);color:var(--txt)}
+*{box-sizing:border-box;margin:0;padding:0;min-width:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-background:var(--bg);color:var(--txt);
-font-family:"Segoe UI",Inter,Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
-line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-img{max-width:100%;display:block}
+body{background:var(--bg);color:var(--txt);font:17px/1.55 Inter,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
 a{color:inherit}
 button,input,select,textarea{font:inherit;color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
 .hidden{display:none !important}
+.band{padding:clamp(48px,7vw,96px) max(5vw,16px)}
+.wrap{max-width:var(--max);margin:0 auto}
+.alt{background:var(--surface)}
+section[id]{scroll-margin-top:76px}
+h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.12}
+h1{font-size:clamp(34px,4.8vw,56px);font-weight:700}
+h2{font-size:clamp(27px,3.4vw,42px);font-weight:700;max-width:24ch}
+h3{font-size:20px;font-weight:600;line-height:1.25}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:58ch;margin-top:16px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-txt);margin-bottom:10px}
 
 /* ---------- header ---------- */
-header{position:sticky;top:0;z-index:50;background:rgba(7,23,28,.94) !important;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
-.brand{display:flex;align-items:center;text-decoration:none;flex:none;font-weight:760;letter-spacing:.02em;font-size:1.02rem}
-.brand img{height:34px;width:auto;display:block}
-@media(max-width:600px){
-  .hd .btn{display:none}
-  .brand img{height:28px}
-  .paises button{padding:6px 11px;font-size:.78rem}
-}
-section[id],#configurador,#cotizar,#aviso-privacidad{scroll-margin-top:74px}
-.hd-r{display:flex;align-items:center;gap:10px}
-.paises{display:flex;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:3px}
-.paises button{background:none;border:0;padding:6px 13px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.18s}
-.paises button[aria-pressed="true"]{background:var(--accent);color:#07171c}
-.btn{display:inline-block;border:0;border-radius:var(--rs);padding:11px 20px;font-weight:650;font-size:.9rem;cursor:pointer;text-decoration:none;transition:.18s;text-align:center}
-.btn-p{background:var(--accent);color:#07171c}
+header{position:sticky;top:0;z-index:50;background:var(--deep);color:#e6eeea}
+.hd{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:14px 26px;flex-wrap:wrap;padding:11px max(5vw,16px)}
+.brand{display:flex;align-items:center;text-decoration:none;font-weight:700;letter-spacing:.02em;color:#fff}
+.brand img{height:34px;width:auto}
+.menu{display:flex;gap:22px;font-size:15px}
+.menu a{text-decoration:none;opacity:.86}
+.menu a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.hd-r{margin-left:auto;display:flex;align-items:center;gap:10px}
+.paises{display:flex;border:1px solid #2c5258;border-radius:999px;padding:3px}
+.paises button{border:0;background:none;color:#cfdcd8;font-weight:600;font-size:14px;padding:7px 14px;border-radius:999px;cursor:pointer;min-height:34px}
+.paises button[aria-pressed="true"]{background:var(--accent);color:var(--deep)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.16s}
+.btn-p{background:var(--accent);color:var(--deep)}
 .btn-p:hover{background:var(--accent-dk)}
-.btn-g{background:transparent;color:var(--txt);border:1px solid var(--line)}
-.btn-g:hover{border-color:var(--accent);color:var(--accent-txt)}
-.btn-lg{padding:15px 30px;font-size:1rem}
-.hd .btn{padding:9px 16px;font-size:.85rem}
+.btn-g{border-color:var(--txt);color:var(--txt);background:none}
+.btn-g:hover{background:var(--txt);color:#fff}
+.btn-sm{min-height:40px;padding:0 18px;font-size:15px}
+@media(max-width:900px){.menu{display:none}}
+@media(max-width:600px){.hd .btn{display:none}.brand img{height:28px}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:72px 0 60px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:-30% 20% auto -10%;height:560px;
-background:radial-gradient(60% 60% at 30% 40%,rgba(47,112,128,.45),transparent 70%);pointer-events:none}
-.hero-g{display:grid;gap:44px;align-items:center;position:relative}
-@media(min-width:900px){.hero-g{grid-template-columns:1.05fr 1fr;gap:56px}}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.73rem;font-weight:700;letter-spacing:.09em;
-text-transform:uppercase;color:var(--accent-txt);background:rgba(134,196,64,.1);
-border:1px solid rgba(134,196,64,.25);padding:6px 13px;border-radius:999px;margin-bottom:20px}
-h1{font-size:clamp(2.05rem,5vw,3.2rem);line-height:1.09;letter-spacing:-.025em;font-weight:760;margin-bottom:20px}
-h1 em{font-style:normal;color:var(--accent-txt)}
-.lead{font-size:1.1rem;color:var(--muted);max-width:54ch;margin-bottom:28px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
-.trust{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:.82rem;color:var(--dim)}
+.hero{position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-12vw;top:-10%;width:62vw;height:120%;border-radius:50%;background:radial-gradient(closest-side,var(--tint),transparent);z-index:0}
+.hgrid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);align-items:center}
+.brandline{display:block;margin-top:14px;color:var(--accent-txt);font-size:clamp(22px,2.8vw,34px);line-height:1.2}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--muted);margin-top:22px}
 .trust span{display:flex;align-items:center;gap:7px}
-.dot{width:5px;height:5px;border-radius:50%;background:var(--ok);flex:none}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.ph{position:relative;border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.hero .ph{aspect-ratio:4/3}
 
-/* tarjeta del hero */
-.pack{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.pack-h{padding:18px 22px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(134,196,64,.1),transparent 60%)}
-.pack-h b{display:block;font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
-.pack-h span{font-size:.82rem;color:var(--muted)}
-.pack ul{list-style:none}
-.pack li{display:flex;gap:14px;align-items:flex-start;padding:15px 22px;border-bottom:1px solid var(--line)}
-.pack li:last-child{border-bottom:0}
-.pack .n{width:26px;height:26px;border-radius:50%;background:rgba(134,196,64,.12);color:var(--accent-txt);
-display:grid;place-items:center;font-size:.74rem;font-weight:800;flex:none;margin-top:2px}
-.pack li b{display:block;font-size:.93rem;font-weight:660}
-.pack li span{font-size:.84rem;color:var(--muted);line-height:1.45}
+/* ---------- foto + texto ---------- */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.split .ph{aspect-ratio:3/2}
+.points{list-style:none;margin-top:24px;display:grid;gap:10px}
+.points li{display:flex;gap:10px}
+.points li::before{content:"✓";color:var(--accent-txt);font-weight:700}
 
-/* ---------- sections ---------- */
-section{padding:66px 0}
-.sec-h{max-width:62ch;margin-bottom:38px}
-h2{font-size:clamp(1.55rem,3.4vw,2.2rem);line-height:1.18;letter-spacing:-.02em;font-weight:730;margin-bottom:12px}
-.sec-h p{color:var(--muted);font-size:1.02rem}
-.kicker{font-size:.73rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-txt);margin-bottom:11px}
+/* ---------- equipos ---------- */
+.cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.card{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.card .ph{border-radius:0;aspect-ratio:16/9}
+.card .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card p{color:var(--muted);font-size:16px}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.chips li{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;background:var(--surface)}
+.card .more{margin-top:auto;padding-top:12px;font-weight:600;color:var(--accent-txt);text-decoration:none}
+.card .more:hover{text-decoration:underline}
+.extra{margin-top:24px;border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;display:flex;gap:10px 18px;align-items:center;flex-wrap:wrap}
+.extra b{font-weight:600}
 
-/* ---------- configurador ---------- */
-#configurador{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.steps{display:flex;gap:7px;margin-bottom:30px;flex-wrap:wrap}
-.pill{display:flex;align-items:center;gap:7px;font-size:.76rem;font-weight:650;padding:6px 13px;border-radius:999px;
-border:1px solid var(--line);color:var(--dim);background:var(--surface2);transition:.2s}
-.pill.on{border-color:var(--accent-txt);color:var(--accent-txt);background:rgba(134,196,64,.1)}
-.pill.done{border-color:rgba(61,220,151,.35);color:var(--ok);background:rgba(61,220,151,.08)}
-.pill i{font-style:normal;width:18px;height:18px;border-radius:50%;background:var(--bg);border:1px solid currentColor;
-display:grid;place-items:center;font-size:.66rem;font-weight:800;flex:none;line-height:1}
-.pill.on i{background:var(--accent);color:#07171c;border-color:var(--accent)}
-.pill.done i{background:var(--ok);color:#06231a;border-color:var(--ok)}
-
-.q{font-size:1.16rem;font-weight:680;margin-bottom:6px;letter-spacing:-.01em}
-.q-sub{color:var(--muted);font-size:.92rem;margin-bottom:22px}
-
-.opts{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
-.opt{position:relative;text-align:left;background:var(--surface2);border:1.5px solid var(--line);border-radius:var(--r);
-padding:18px;cursor:pointer;transition:.18s}
+/* ---------- solicitud en 4 pasos ---------- */
+.steps{display:flex;gap:8px;margin:32px 0 26px;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);color:var(--dim);background:var(--surface2)}
+.pill.on{border-color:var(--accent-txt);color:var(--accent-txt);background:var(--tint)}
+.pill.done{border-color:#b9dcc9;color:var(--ok);background:#eef8f2}
+.pill i{font-style:normal;width:20px;height:20px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;line-height:1}
+.pill.on i{background:var(--accent);color:var(--deep);border-color:var(--accent)}
+.pill.done i{background:var(--ok);color:#fff;border-color:var(--ok)}
+.q{font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+.q-sub{color:var(--muted);font-size:16px;margin-bottom:20px}
+.opts{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+.opt{text-align:left;background:var(--surface2);border:1.5px solid var(--line);border-radius:18px;padding:20px;cursor:pointer;transition:.16s}
 .opt:hover{border-color:var(--accent-dk);transform:translateY(-2px)}
-.opt[aria-pressed="true"]{border-color:var(--accent-dk);background:rgba(134,196,64,.14)}
-.opt h4{font-size:1rem;font-weight:680;margin-bottom:4px}
-.opt .m{font-size:.8rem;color:var(--accent-txt);font-weight:620;margin-bottom:8px}
-.opt .d{font-size:.83rem;color:var(--muted);line-height:1.45}
-.opt svg{width:44px;height:44px;margin-bottom:12px;display:block;color:var(--accent-txt)}
-
-.nav-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;flex-wrap:wrap}
-.back{background:none;border:0;color:var(--dim);font-size:.87rem;cursor:pointer;padding:8px 0}
+.opt[aria-pressed="true"]{border-color:var(--accent-dk);background:var(--tint)}
+.opt h4{font-size:17px;font-weight:600;margin-bottom:4px}
+.opt .m{font-size:14px;color:var(--accent-txt);font-weight:600;margin-bottom:8px}
+.opt .d{font-size:15px;color:var(--muted);line-height:1.45}
+.nav-row{margin-top:22px}
+.back{background:none;border:0;color:var(--dim);font-size:15px;cursor:pointer;padding:8px 0}
 .back:hover{color:var(--txt)}
-
-/* resultado */
 .res{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.res-top{padding:22px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(134,196,64,.1),transparent 60%)}
-.res-top .kicker{margin-bottom:6px}
-.res-body{padding:22px}
-.res-body h3{font-size:1.3rem;font-weight:700;letter-spacing:-.015em;margin-bottom:5px}
-.res-body .why{color:var(--accent-txt);font-size:.9rem;font-weight:620;margin-bottom:14px}
+.res-top{padding:22px 24px;border-bottom:1px solid var(--line);background:var(--tint)}
+.res-top .kicker{margin-bottom:4px}
+.res-body{padding:24px}
+.res-body h3{font-size:26px;font-weight:700;margin-bottom:4px}
+.res-body .why{color:var(--accent-txt);font-weight:600;margin-bottom:14px}
 .feats{list-style:none;display:grid;gap:9px;margin-bottom:18px}
-.feats li{display:flex;gap:10px;font-size:.9rem;color:var(--muted);line-height:1.45}
-.feats li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;margin-top:8px}
-.res-foot{padding:18px 22px;border-top:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-.res-sum{font-size:.84rem;color:var(--dim)}
-.note{background:rgba(134,196,64,.14);border:1px solid rgba(116,176,48,.5);
-border-radius:var(--rs);padding:11px 13px;font-size:.83rem;color:var(--txt);line-height:1.45}
+.feats li{display:flex;gap:10px;color:var(--muted);font-size:16px}
+.feats li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;margin-top:10px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:var(--rs);padding:11px 14px;font-size:14px;color:var(--muted)}
+.res-foot{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.res-sum{font-size:14px;color:var(--dim)}
 
-/* ---------- tarjetas ---------- */
-.cards{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
-.card{background:var(--surface2);box-shadow:0 1px 2px rgba(22,24,29,.05);border:1px solid var(--line);border-radius:var(--r);padding:26px}
-.card .ic{width:40px;height:40px;border-radius:10px;background:rgba(134,196,64,.12);
-display:grid;place-items:center;margin-bottom:15px;color:var(--accent-txt)}
-.card h3{font-size:1.06rem;font-weight:680;margin-bottom:8px;letter-spacing:-.01em}
-.card p{color:var(--muted);font-size:.92rem;line-height:1.55}
-.card .lista{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-.card .lista li{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.8rem;color:var(--txt);background:var(--surface2)}
+/* ---------- pestañas ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;border-bottom:1px solid var(--line)}
+.tabs button{border:0;background:none;color:var(--muted);font-weight:600;font-size:16px;padding:12px 4px;margin-right:18px;cursor:pointer;border-bottom:3px solid transparent;min-height:44px}
+.tabs button[aria-selected="true"]{color:var(--txt);border-color:var(--accent)}
+.pane{margin-top:36px}
+.pane .ph{aspect-ratio:4/3}
+.pane h3{font-size:clamp(24px,2.6vw,32px)}
 
-/* ---------- pasos ---------- */
-.proof{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:32px}
-.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
-.paso{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;border-left:3px solid var(--accent-txt)}
-.paso small{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent-txt);margin-bottom:8px}
-.paso b{display:block;font-size:1.02rem;font-weight:720;letter-spacing:-.01em;margin-bottom:7px}
-.paso p{font-size:.88rem;color:var(--muted);line-height:1.6}
-.marcas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.marca{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.84rem;color:var(--muted);background:var(--surface)}
+/* ---------- servicios y pasos ---------- */
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+.svc{background:var(--surface2);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.svc p{color:var(--muted);font-size:16px}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--tint);display:grid;place-items:center;color:var(--accent-txt);font-weight:700;margin-bottom:6px}
+.marcas{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;align-items:center;font-size:14px;color:var(--muted)}
+.marcas span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--surface2)}
 
-/* ---------- FAQ ---------- */
-.faq{display:grid;gap:10px;max-width:820px}
-.faq details{background:var(--surface2);border:1px solid var(--line);border-radius:var(--rs);padding:0 20px}
-.faq summary{cursor:pointer;padding:17px 0;font-weight:660;font-size:.98rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
+/* ---------- preguntas ---------- */
+.cols2{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+.faq details{border-top:1px solid var(--line);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{font-size:18px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";color:var(--accent-txt);font-weight:700;flex:none}
+.faq summary::after{content:"+";color:var(--accent-txt);font-size:24px;line-height:1}
 .faq details[open] summary::after{content:"–"}
-.faq p{color:var(--muted);font-size:.92rem;padding:0 0 18px;max-width:70ch}
+.faq p{color:var(--muted);margin-top:10px;max-width:70ch}
 
-/* ---------- form ---------- */
-#cotizar{background:var(--surface);border-top:1px solid var(--line)}
-.form-g{display:grid;gap:36px}
-@media(min-width:900px){.form-g{grid-template-columns:.85fr 1fr;gap:52px;align-items:start}}
-.form-box{background:var(--surface2);box-shadow:0 10px 30px -18px rgba(22,24,29,.35);border:1px solid var(--line);border-radius:var(--r);padding:26px}
-.fld{margin-bottom:15px}
-.fld label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.fld label b{color:#ff6b6b;font-weight:700}
-.fld input,.fld select,.fld textarea{width:100%;background:var(--bg);border:1px solid var(--line);
-border-radius:var(--rs);padding:12px 14px;font-size:.92rem;transition:.16s}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--accent)}
-.fld input::placeholder,.fld textarea::placeholder{color:var(--dim)}
-.fld textarea{resize:vertical;min-height:78px}
-.two{display:grid;gap:15px}
+/* ---------- banda oscura con formulario ---------- */
+.deep{background:var(--deep);color:#eef3ef}
+.deep h2{color:#fff}
+.deep .lead{color:#b9cbc7}
+.deep .kicker{color:#a6d86a}
+.deep .points li{color:#dfe7e3}
+.deep .points li::before{color:var(--accent)}
+.form-box{background:#fff;color:var(--txt);border-radius:var(--r);padding:clamp(20px,3vw,32px)}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.fld label b{color:#c0392b}
+.fld input,.fld select,.fld textarea{width:100%;font-size:16px;padding:12px 14px;border:1px solid #cfd8d3;border-radius:var(--rs);background:#fff}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent-dk)}
+.fld textarea{min-height:88px;resize:vertical}
+.two{display:grid;gap:14px}
 @media(min-width:560px){.two{grid-template-columns:1fr 1fr}}
-.chk{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:16px 0}
-.chk input{width:16px;height:16px;margin-top:2px;flex:none;accent-color:var(--accent)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--muted);margin:14px 0}
+.chk input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--accent-dk)}
 .chk a{color:var(--accent-txt)}
-.resumen{background:var(--bg);border:1px solid var(--line);border-radius:var(--rs);padding:14px;margin-bottom:18px;font-size:.86rem}
-.resumen dt{color:var(--dim);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
-.resumen dd{color:var(--txt);margin-bottom:9px;font-weight:600}
+.resumen{background:var(--tint);border-radius:var(--rs);padding:14px 16px;margin-bottom:18px;font-size:15px}
+.resumen dt{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.resumen dd{margin-bottom:8px;font-weight:600}
 .resumen dd:last-child{margin-bottom:0}
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:46px 0 34px;font-size:.85rem;color:var(--muted)}
-.f-g{display:grid;gap:28px}
-@media(min-width:680px){.f-g{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:980px){.f-g{grid-template-columns:1.3fr 1fr 1fr}}
-footer h4{color:var(--txt);font-size:.9rem;font-weight:680;margin-bottom:11px}
-footer ul{list-style:none;display:grid;gap:7px}
-footer a{text-decoration:none;transition:.15s}
-footer a:hover{color:var(--txt)}
-.f-bot{border-top:1px solid var(--line);margin-top:30px;padding-top:22px;text-align:center;color:var(--dim);font-size:.78rem;display:grid;gap:6px}
-.f-bot p{max-width:92ch;margin:0 auto}
-.aviso{font-size:.79rem;color:var(--dim);line-height:1.6;max-width:70ch}
-.aviso h3{color:var(--txt);font-size:1rem;margin-bottom:10px}
-.aviso p{margin-bottom:9px}
+/* ---------- aviso y pie ---------- */
+.aviso{font-size:14px;color:var(--muted);max-width:76ch}
+.aviso h3{font-size:17px;margin-bottom:8px;color:var(--txt)}
+.aviso p{margin-bottom:8px}
 .aviso a{color:var(--accent-txt)}
+footer{background:var(--deep);color:#dfe7e3}
+footer .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;font-size:15px}
+footer h4{margin-bottom:10px;font-size:16px;color:#fff}
+footer p{margin-bottom:8px}
+footer a{text-decoration:none}
+footer a:hover{text-decoration:underline}
+.legal{border-top:1px solid #24484d;margin-top:40px;padding-top:24px;font-size:13px;color:#a9bdb9}
+.legal p{max-width:100ch}
+
+@media(max-width:900px){.hgrid,.split,.cols2{grid-template-columns:minmax(0,1fr)}.cards3{grid-template-columns:repeat(2,minmax(0,1fr))}.hero::after{display:none}}
+@media(max-width:600px){.cards2,.cards3,footer .cols{grid-template-columns:minmax(0,1fr)}.ctas .btn{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.opt,.btn{transition:none}}
 
 /* ---------- WhatsApp ---------- */
 #mgWa{position:fixed;left:20px;bottom:20px;z-index:60}
@@ -319,61 +305,66 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 </head>
 <body>
 
-<header class="dark">
-<div class="wrap hd">
+<header>
+<div class="hd">
 <a href="#" class="brand" aria-label="Mobility Global">
 <img src="assets/logo-mobility.png" alt="Mobility Global" width="429" height="120"
      onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
 <span style="display:none">MOBILITY GLOBAL</span>
 </a>
+<nav class="menu" aria-label="Secciones"><a href="#equipos">Equipos</a><a href="#por-que">Por qué Mac</a><a href="#servicios">Servicios</a><a href="#preguntas">Preguntas</a></nav>
 <div class="hd-r">
 <div class="paises" role="group" aria-label="País">
-<button type="button" id="btnMX" aria-pressed="true" onclick="setPais('MX', true)">🇲🇽 MX</button>
-<button type="button" id="btnCO" aria-pressed="false" onclick="setPais('CO', true)">🇨🇴 CO</button>
+<button type="button" id="btnMX" aria-pressed="true" onclick="setPais('MX', true)">México</button>
+<button type="button" id="btnCO" aria-pressed="false" onclick="setPais('CO', true)">Colombia</button>
 </div>
-<a href="#configurador" class="btn btn-p">Arma tu solicitud</a>
+<a href="#configurador" class="btn btn-p btn-sm">Pedir cotización</a>
 </div>
 </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<div class="hero dark">
-<div class="wrap hero-g">
+<section class="band hero"><div class="wrap hgrid">
 <div>
-<div class="eyebrow">Equipos Apple para empresas</div>
-<h1>Mac y iPad para tu equipo, <em>entregados listos para trabajar</em>.</h1>
-<p class="lead">Cotizamos, entregamos y configuramos cada equipo con tu correo, tus apps y tus políticas de seguridad. Una factura local y un solo responsable de principio a fin.</p>
-<div class="hero-cta">
-<a href="#configurador" class="btn btn-p btn-lg">Arma tu solicitud en 4 pasos</a>
-<a href="#valor" class="btn btn-g btn-lg">Ver qué incluye</a>
-</div>
+<h1>Mac y iPad para tu empresa, listos desde el primer día.<span class="brandline">Cotizados, configurados y entregados por Mobility Global.</span></h1>
+<p class="lead">Cada equipo llega a tu oficina con tu correo, tus apps y tus políticas de seguridad. Una factura local y un solo responsable de principio a fin.</p>
+<div class="ctas"><a class="btn btn-p" href="#configurador">Armar mi solicitud</a><a class="btn btn-g" href="#equipos">Ver equipos</a></div>
 <div class="trust">
 <span><i class="dot"></i><b id="tFact">Facturación CFDI</b></span>
 <span><i class="dot"></i>Entrega y configuración local</span>
 <span><i class="dot"></i>Soporte en español</span>
 </div>
 </div>
+<div class="ph"><img src="img/mac-escritorio.jpg" alt="Computadora portátil Mac abierta sobre un escritorio claro" width="1200" height="799" fetchpriority="high"></div>
+</div></section>
 
-<div class="pack" aria-label="Qué recibes con cada equipo">
-<div class="pack-h"><b>Lo que llega con cada equipo</b><span>No solo la caja</span></div>
-<ul>
-<li><span class="n">1</span><div><b>El equipo correcto para cada puesto</b><span>Te ayudamos a elegir modelo y configuración según el trabajo de cada persona.</span></div></li>
-<li><span class="n">2</span><div><b>Configurado antes de entregarlo</b><span>Correo, apps, Wi-Fi y políticas de seguridad puestos desde el primer encendido.</span></div></li>
-<li><span class="n">3</span><div><b>Integrado con lo que ya usas</b><span>Microsoft 365, Teams y tu red, junto con tus equipos Windows.</span></div></li>
-<li><span class="n">4</span><div><b>Con alguien que responde</b><span>Garantía del fabricante gestionada por nosotros y soporte local.</span></div></li>
-</ul>
+<!-- ================= FOTO + TEXTO ================= -->
+<section class="band alt"><div class="wrap split">
+<div>
+<h2>El equipo llega. Nosotros hacemos que trabaje.</h2>
+<p class="lead">Un equipo nuevo todavía necesita cuentas, apps, seguridad y alguien que responda cuando algo falla. De eso nos encargamos, en español y con un solo responsable.</p>
+<ul class="points"><li>Asesor local en México y Colombia</li><li>Convive con Microsoft 365 y con tus equipos Windows</li><li>Garantía del fabricante, gestionada por nosotros</li></ul>
 </div>
-</div>
-</div>
+<div class="ph"><img src="img/equipo.jpg" alt="Equipo de trabajo revisando una computadora portátil Mac" width="1200" height="799" loading="lazy"></div>
+</div></section>
 
-<!-- ================= CONFIGURADOR ================= -->
-<section id="configurador">
-<div class="wrap">
-<div class="sec-h">
+<!-- ================= EQUIPOS ================= -->
+<section class="band" id="equipos"><div class="wrap">
+<div class="kicker">Qué cotizamos</div>
+<h2>Los equipos para el trabajo.</h2>
+<p class="lead">Trabajamos con mayoristas autorizados en cada país. Si no ves aquí lo que buscas, pregúntanos.</p>
+<div class="cards2">
+<article class="card"><div class="ph"><img src="img/mac-escritorio.jpg" alt="Computadora portátil Mac" width="1200" height="799" loading="lazy"></div><div class="body"><h3>Mac</h3><p>Portátiles y equipos de escritorio para oficina, dirección, diseño y desarrollo.</p><ul class="chips"><li>MacBook Neo</li><li>MacBook Air</li><li>MacBook Pro</li><li>iMac</li><li>Mac mini</li><li>Mac Studio</li></ul><a class="more" href="#configurador">Cotizar equipos Mac →</a></div></article>
+<article class="card"><div class="ph"><img src="img/ipad.jpg" alt="Mano sosteniendo un iPad" width="1070" height="943" loading="lazy"></div><div class="body"><h3>iPad</h3><p>Para vender en campo, cobrar, inventariar, firmar y presentar. Con teclado y lápiz cuando el puesto lo pide.</p><ul class="chips"><li>iPad</li><li>iPad mini</li><li>iPad Air</li><li>iPad Pro</li></ul><a class="more" href="#configurador">Cotizar iPad →</a></div></article>
+</div>
+<div class="extra"><b>En la misma cotización:</b><ul class="chips" style="margin:0"><li>Apple Watch</li><li>AirPods</li><li>Teclados y accesorios</li><li>Pantallas y adaptadores</li></ul></div>
+</div></section>
+
+<!-- ================= SOLICITUD ================= -->
+<section class="band alt" id="configurador"><div class="wrap">
 <div class="kicker">Tu solicitud</div>
-<h2>Dinos qué necesitas</h2>
-<p>Cuatro preguntas. Al final te decimos por dónde empezar y un asesor te manda la cotización.</p>
-</div>
+<h2>Dinos qué necesitas.</h2>
+<p class="lead">Cuatro preguntas. Al final te decimos por dónde empezar y un asesor te manda la cotización.</p>
 
 <div class="steps" id="steps">
 <div class="pill on" data-s="1"><i>1</i>Tipo de equipo</div>
@@ -382,35 +373,17 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 <div class="pill" data-s="4"><i>4</i>Cómo los recibes</div>
 </div>
 
-<!-- PASO 1 -->
 <div class="cfg-step" data-step="1">
 <p class="q">¿Qué tipo de equipo buscas?</p>
 <p class="q-sub">Si necesitas varios tipos, elige "Varios" y lo detallamos en la cotización.</p>
 <div class="opts">
-<button type="button" class="opt" onclick="pick('tipo','portatil',this)">
-<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="11" width="30" height="20" rx="2.5"/><path d="M4 37h40"/></svg>
-<h4>Computadoras portátiles</h4><div class="m">MacBook Neo · MacBook Air · MacBook Pro</div>
-<div class="d">Para quien trabaja entre oficina, casa y viajes.</div>
-</button>
-<button type="button" class="opt" onclick="pick('tipo','escritorio',this)">
-<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="8" width="34" height="23" rx="2.5"/><path d="M24 31v8M16 40h16"/></svg>
-<h4>Computadoras de escritorio</h4><div class="m">iMac · Mac mini · Mac Studio</div>
-<div class="d">Para puestos fijos, recepción, estudios y salas.</div>
-</button>
-<button type="button" class="opt" onclick="pick('tipo','ipad',this)">
-<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="6" width="24" height="36" rx="3.5"/><path d="M22 37h4"/></svg>
-<h4>iPad</h4><div class="m">iPad · iPad mini · iPad Air · iPad Pro</div>
-<div class="d">Para ventas en campo, punto de venta, almacén y dirección.</div>
-</button>
-<button type="button" class="opt" onclick="pick('tipo','varios',this)">
-<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="24" height="16" rx="2"/><path d="M3 33h30"/><rect x="33" y="18" width="11" height="18" rx="2.2"/></svg>
-<h4>Varios o aún no sé</h4><div class="m">Lo definimos contigo</div>
-<div class="d">Mezcla de equipos, accesorios, Apple Watch o AirPods.</div>
-</button>
+<button type="button" class="opt" onclick="pick('tipo','portatil',this)"><h4>Computadoras portátiles</h4><div class="m">MacBook Neo · MacBook Air · MacBook Pro</div><div class="d">Para quien trabaja entre oficina, casa y viajes.</div></button>
+<button type="button" class="opt" onclick="pick('tipo','escritorio',this)"><h4>Computadoras de escritorio</h4><div class="m">iMac · Mac mini · Mac Studio</div><div class="d">Para puestos fijos, recepción, estudios y salas.</div></button>
+<button type="button" class="opt" onclick="pick('tipo','ipad',this)"><h4>iPad</h4><div class="m">iPad · iPad mini · iPad Air · iPad Pro</div><div class="d">Para ventas en campo, punto de venta, almacén y dirección.</div></button>
+<button type="button" class="opt" onclick="pick('tipo','varios',this)"><h4>Varios o aún no sé</h4><div class="m">Lo definimos contigo</div><div class="d">Mezcla de equipos, accesorios, Apple Watch o AirPods.</div></button>
 </div>
 </div>
 
-<!-- PASO 2 -->
 <div class="cfg-step hidden" data-step="2">
 <p class="q">¿Para qué trabajo son, principalmente?</p>
 <p class="q-sub">Con esto proponemos el modelo. La configuración exacta se afina al cotizar.</p>
@@ -423,7 +396,6 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 <div class="nav-row"><button type="button" class="back" onclick="goStep(1)">← Atrás</button></div>
 </div>
 
-<!-- PASO 3 -->
 <div class="cfg-step hidden" data-step="3">
 <p class="q">¿Cuántos equipos necesitas?</p>
 <p class="q-sub">Un aproximado basta. Nos ayuda a proponerte condiciones por volumen.</p>
@@ -436,7 +408,6 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 <div class="nav-row"><button type="button" class="back" onclick="goStep(2)">← Atrás</button></div>
 </div>
 
-<!-- PASO 4 -->
 <div class="cfg-step hidden" data-step="4">
 <p class="q">¿Cómo quieres recibirlos?</p>
 <p class="q-sub">Es lo que más cambia el alcance de la propuesta.</p>
@@ -448,13 +419,9 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 <div class="nav-row"><button type="button" class="back" onclick="goStep(3)">← Atrás</button></div>
 </div>
 
-<!-- RESULTADO -->
 <div class="cfg-step hidden" data-step="5">
 <div class="res">
-<div class="res-top">
-<div class="kicker">Por dónde empezar</div>
-<p style="color:var(--muted);font-size:.93rem" id="resContexto"></p>
-</div>
+<div class="res-top"><div class="kicker">Por dónde empezar</div><p style="color:var(--muted);font-size:15px" id="resContexto"></p></div>
 <div class="res-body">
 <h3 id="resNombre"></h3>
 <p class="why" id="resPorque"></p>
@@ -463,143 +430,64 @@ margin:0 auto 13px;font-size:1.15rem;font-weight:800}
 </div>
 <div class="res-foot">
 <div class="res-sum" id="resResumen"></div>
-<div style="display:flex;gap:10px;flex-wrap:wrap">
+<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
 <button type="button" class="back" onclick="reiniciar()">Empezar de nuevo</button>
-<a href="#cotizar" class="btn btn-p" onclick="pasarAlForm()">Pedir cotización</a>
+<a href="#cotizar" class="btn btn-p btn-sm" onclick="pasarAlForm()">Pedir cotización</a>
 </div>
 </div>
 </div>
 </div>
+</div></section>
 
+<!-- ================= POR QUÉ ================= -->
+<section class="band" id="por-que"><div class="wrap">
+<h2>Por qué Mac y iPad en tu empresa.</h2>
+<div class="tabs" role="tablist" aria-label="Razones">
+<button type="button" role="tab" aria-selected="true">Todo funciona junto</button>
+<button type="button" role="tab" aria-selected="false">Seguridad</button>
+<button type="button" role="tab" aria-selected="false">Tu gente y TI</button>
 </div>
-</section>
+<div class="pane" id="pane" role="tabpanel" aria-live="polite"></div>
+</div></section>
 
-<!-- ================= PORTAFOLIO ================= -->
-<section id="equipos" style="background:var(--bg)">
-<div class="wrap">
-<div class="sec-h">
-<div class="kicker">Qué cotizamos</div>
-<h2>La línea de productos Apple para el trabajo</h2>
-<p>Trabajamos con mayoristas autorizados en cada país. Si no ves aquí lo que buscas, pregúntanos.</p>
-</div>
-<div class="cards">
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></div>
-<h3>Computadoras portátiles Mac</h3>
-<p>Desde el equipo de entrada para oficina hasta estaciones de trabajo portátiles para edición y desarrollo.</p>
-<ul class="lista"><li>MacBook Neo</li><li>MacBook Air</li><li>MacBook Pro</li></ul>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/></svg></div>
-<h3>Computadoras de escritorio Mac</h3>
-<p>Para puestos fijos, recepción, salas y estudios. Con o sin pantalla integrada.</p>
-<ul class="lista"><li>iMac</li><li>Mac mini</li><li>Mac Studio</li></ul>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
-<h3>iPad</h3>
-<p>Para vender, cobrar, inventariar, firmar y presentar. Con teclado y lápiz cuando el puesto lo pide.</p>
-<ul class="lista"><li>iPad</li><li>iPad mini</li><li>iPad Air</li><li>iPad Pro</li></ul>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5v14"/><circle cx="12" cy="12" r="9"/></svg></div>
-<h3>Complementos</h3>
-<p>Lo que completa el puesto de trabajo, en la misma cotización y la misma entrega.</p>
-<ul class="lista"><li>Apple Watch</li><li>AirPods</li><li>Teclados y accesorios</li><li>Pantallas y adaptadores</li></ul>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ================= VALOR ================= -->
-<section id="valor" style="background:var(--surface);border-top:1px solid var(--line)">
-<div class="wrap">
-<div class="sec-h">
+<!-- ================= SERVICIOS ================= -->
+<section class="band alt" id="servicios"><div class="wrap">
 <div class="kicker">Qué incluye</div>
-<h2>Comprar el equipo es lo fácil. Lo difícil es dejarlo funcionando en tu empresa.</h2>
-<p>Un equipo Mac que llega en su caja todavía necesita cuentas, apps, seguridad y alguien que lo atienda. De eso nos encargamos.</p>
+<h2>Lo que hacemos además de entregar.</h2>
+<p class="lead">Los servicios que hacen que un equipo nuevo llegue listo para trabajar y siga así.</p>
+<div class="cards3">
+<div class="svc"><div class="ico">1</div><h3>Configurar y entregar</h3><p>Preparamos cada equipo con tus apps y políticas, lo dejamos en tu inventario y lo llevamos a tu oficina.</p></div>
+<div class="svc"><div class="ico">2</div><h3>Apple Business Manager y tu MDM</h3><p>Te ayudamos a conectar Apple Business Manager con tu plataforma de administración de dispositivos.</p></div>
+<div class="svc"><div class="ico">3</div><h3>Convive con Microsoft 365</h3><p>Correo, Teams, OneDrive e inicio de sesión corporativo, administrados junto con tus equipos Windows.</p></div>
+<div class="svc"><div class="ico">4</div><h3>Seguridad desde el primer día</h3><p>Cifrado de disco, contraseñas, protección contra malware y borrado remoto si un equipo se pierde.</p></div>
+<div class="svc"><div class="ico">5</div><h3>Equipos que ya tienes</h3><p>Hacemos el inventario de tus equipos Mac sin administrar y los sumamos a tu plataforma.</p></div>
+<div class="svc"><div class="ico">6</div><h3>Garantía y soporte</h3><p>Gestionamos la garantía por ti y damos soporte en español, con un asesor que conoce tu cuenta.</p></div>
 </div>
-<div class="cards">
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><rect x="4" y="15" width="16" height="6" rx="1.5"/></svg></div>
-<h3>Despliegue sin sorpresas</h3>
-<p>Preparamos Apple Business Manager y tu plataforma de administración de dispositivos (MDM) para que cada equipo se configure solo al encenderlo.</p>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M11 7h4a2 2 0 0 1 2 2v4M13 17H9a2 2 0 0 1-2-2v-4"/></svg></div>
-<h3>Convive con Microsoft 365</h3>
-<p>Correo, Teams, OneDrive e inicio de sesión corporativo funcionando en Mac y iPad, administrados junto con tus equipos Windows.</p>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-<h3>Seguridad desde el primer día</h3>
-<p>Cifrado de disco, contraseñas, protección contra malware y borrado remoto si un equipo se pierde. Todo documentado.</p>
-</div>
-<div class="card">
-<div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 10h8M8 14h5"/></svg></div>
-<h3>Una factura, un responsable</h3>
-<p>Equipos, accesorios, configuración y soporte en una sola propuesta, con facturación local y un asesor que conoce tu cuenta.</p>
-</div>
-</div>
-</div>
-</section>
+<div class="marcas" aria-label="Tecnologías que también integramos">También integramos: <span>Microsoft 365</span><span>Microsoft Intune</span><span>Fortinet</span><span>Aruba</span><span>Bitdefender</span><span>Jabra</span><span>Yealink</span></div>
+</div></section>
 
-<!-- ================= CÓMO FUNCIONA ================= -->
-<section id="proceso" style="background:var(--surface);padding-top:0">
-<div class="wrap">
-<div class="proof">
-<div class="kicker">Cómo trabajamos</div>
-<h2 style="font-size:1.5rem">De la cotización al equipo encendido, en tres pasos</h2>
-<p style="color:var(--muted);max-width:62ch;margin-top:10px">Mobility Global es integrador de TI con operación propia en México, Colombia y Estados Unidos. Quien te cotiza es el mismo equipo que entrega y configura.</p>
-<div class="pasos">
-<div class="paso"><small>Paso 1</small><b>Cotización el mismo día hábil</b><p>Un asesor revisa tu solicitud, confirma existencias con el mayorista y te manda la propuesta con fecha de entrega.</p></div>
-<div class="paso"><small>Paso 2</small><b>Preparación</b><p>Definimos contigo cuentas, apps y políticas. Si lo pediste configurado, dejamos todo listo antes de entregar.</p></div>
-<div class="paso"><small>Paso 3</small><b>Entrega y acompañamiento</b><p>Entregamos en tu oficina, verificamos que cada persona pueda trabajar y quedamos como tu contacto de soporte.</p></div>
-</div>
-<div class="marcas" aria-label="Tecnologías que también integramos">
-<span class="marca">Microsoft 365</span><span class="marca">Microsoft Intune</span><span class="marca">Fortinet</span>
-<span class="marca">Aruba</span><span class="marca">Bitdefender</span><span class="marca">Jabra</span><span class="marca">Yealink</span>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section id="preguntas">
-<div class="wrap">
-<div class="sec-h">
-<div class="kicker">Preguntas frecuentes</div>
-<h2>Lo que nos preguntan antes de cotizar</h2>
-</div>
+<!-- ================= PREGUNTAS ================= -->
+<section class="band" id="preguntas"><div class="wrap cols2">
+<h2>Lo que nos preguntan antes de cotizar.</h2>
 <div class="faq">
 <details><summary>¿Hay un mínimo de compra?</summary><p>No. Cotizamos desde un equipo. A partir de 10 equipos revisamos condiciones por volumen y entregas por etapas.</p></details>
 <details><summary>¿Facturan en mi país?</summary><p>Sí. En México facturamos con CFDI y en Colombia con factura electrónica DIAN, desde nuestras oficinas locales. Para otros países de Latinoamérica revisamos el caso contigo.</p></details>
 <details><summary>¿Los equipos Mac conviven con Microsoft 365 y con equipos Windows?</summary><p>Sí. Configuramos correo, Teams, OneDrive y las políticas de seguridad en cada equipo Mac o iPad, y los dejamos administrados junto con tus equipos Windows.</p></details>
-<details><summary>¿Cuánto tarda la entrega?</summary><p>Depende del modelo, la configuración y las existencias del mayorista en tu país. La fecha estimada va escrita en la cotización, no la dejamos abierta.</p></details>
+<details><summary>¿Cuánto tarda la entrega?</summary><p>Depende del modelo, la configuración y las existencias del mayorista en tu país. La fecha estimada va escrita en la cotización.</p></details>
 <details><summary>¿Qué garantía tienen los equipos?</summary><p>La garantía es la del fabricante. Si un equipo falla, nosotros gestionamos el trámite por ti.</p></details>
 <details><summary>Ya tenemos equipos Mac sin administrar. ¿Pueden ayudarnos?</summary><p>Sí. Hacemos un inventario de lo que tienes, los integramos a tu plataforma de administración y dejamos las mismas políticas en equipos nuevos y existentes.</p></details>
 </div>
-</div>
-</section>
+</div></section>
 
 <!-- ================= FORMULARIO ================= -->
-<section id="cotizar">
-<div class="wrap">
-<div class="form-g">
+<section class="band deep" id="cotizar"><div class="wrap cols2">
 <div>
 <div class="kicker">Cotización</div>
-<h2>Te respondemos el mismo día hábil</h2>
-<p style="color:var(--muted);margin-top:10px">Un asesor revisa tu solicitud y te manda propuesta con equipos, tiempo de entrega y condiciones de facturación local.</p>
-<div class="trust" style="margin-top:22px;flex-direction:column;gap:11px">
-<span><i class="dot"></i>Factura <b id="tFact2">CFDI</b> y entrega en tu oficina</span>
-<span><i class="dot"></i>Garantía del fabricante, gestionada por nosotros</span>
-<span><i class="dot"></i>Asesor local, no un centro de llamadas</span>
+<h2>Te respondemos el mismo día hábil.</h2>
+<p class="lead">Un asesor revisa tu solicitud y te manda propuesta con equipos, fecha de entrega y condiciones de facturación local.</p>
+<ul class="points"><li>Factura <b id="tFact2" style="font-weight:600;margin-left:-4px">CFDI</b> y entrega en tu oficina</li><li>Propuesta con fecha de entrega por escrito</li><li>Asesor local, no un centro de llamadas</li></ul>
 </div>
-</div>
-
 <div class="form-box">
-<!-- Mismo formulario Web-to-Lead de Zoho CRM que las landings de Jabra.
-     Lo que distingue a esta landing es el valor de "Lead Source". -->
 <form id="leadForm" action="https://crm.zoho.com/crm/WebToLeadForm" method="POST"
 onsubmit="javascript:document.charset='UTF-8'; return submitLeadToZoho();" accept-charset="UTF-8">
 
@@ -668,60 +556,55 @@ onsubmit="javascript:document.charset='UTF-8'; return submitLeadToZoho();" accep
 <span>Acepto el <a href="#aviso-privacidad">Aviso de Privacidad</a> y que Mobility Global me contacte por este medio.</span>
 </label>
 
-<button type="submit" class="btn btn-p" style="width:100%;padding:14px">Solicitar cotización</button>
-<p style="font-size:.76rem;color:var(--dim);text-align:center;margin-top:11px">Sin compromiso. No compartimos tus datos con terceros.</p>
+<button type="submit" class="btn btn-p" style="width:100%">Solicitar cotización</button>
+<p style="font-size:13px;color:var(--dim);text-align:center;margin-top:11px">Sin compromiso. No compartimos tus datos con terceros.</p>
 </form>
 </div>
-</div>
-</div>
-</section>
+</div></section>
 
 <!-- ================= AVISO ================= -->
-<section id="aviso-privacidad" style="padding:52px 0;background:var(--surface);border-top:1px solid var(--line)">
-<div class="wrap aviso">
+<section class="band alt" id="aviso-privacidad" style="padding-block:44px"><div class="wrap aviso">
 <h3>Aviso de Privacidad</h3>
 <p>Mobility Global recaba los datos personales que proporcionas en este formulario (nombre, correo, teléfono y empresa) con la finalidad de generar una cotización, contactarte comercialmente y dar seguimiento a tu solicitud. Tus datos se almacenan en Zoho CRM y no se comparten con terceros ajenos a este fin.</p>
 <p>En México, este tratamiento se rige por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. En Colombia, por la Ley 1581 de 2012. Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición escribiendo a <a href="mailto:aherrera@mobilityglobal.net">aherrera@mobilityglobal.net</a>.</p>
-</div>
-</section>
+</div></section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="dark">
-<div class="wrap">
-<div class="f-g">
-<div>
-<h4>Mobility Global</h4>
-<p style="margin-bottom:12px">Integrador de tecnología de la información con operación en México, Colombia y Estados Unidos.</p>
-<ul>
-<li><a href="https://mobilityglobal.net/" target="_blank" rel="noopener">Sitio corporativo</a></li>
-<li><a href="https://mobilityglobal.net/contacto.html" target="_blank" rel="noopener">Contacto</a></li>
-<li><a href="#aviso-privacidad">Aviso de Privacidad</a></li>
-</ul>
+<!-- ================= PIE ================= -->
+<footer class="band"><div class="wrap">
+<div class="cols">
+<div><h4>Mobility Global</h4><p>Integrador de tecnología de la información con operación en México, Colombia y Estados Unidos.</p><p><a href="https://mobilityglobal.net/" target="_blank" rel="noopener">Sitio corporativo</a> · <a href="https://www.linkedin.com/company/mobility-global/" target="_blank" rel="noopener">LinkedIn</a></p></div>
+<div><h4>México</h4><p>Brasilia 342, Valle Dorado<br>54020 Tlalnepantla, Estado de México</p><p><a href="tel:+525546319780">+52 (55) 4631-9780</a></p></div>
+<div><h4>Colombia</h4><p>Carrera 13A No. 89-38, Oficina 336<br>Edificio Nippon Center, Bogotá</p><p><a href="tel:+5715085890">+57 (1) 5085-890</a></p></div>
 </div>
-<div>
-<h4>México</h4>
-<p>Brasilia 342, Valle Dorado<br>54020 Tlalnepantla, Estado de México</p>
-<p style="margin-top:8px"><a href="tel:+525546319780">+52 (55) 4631-9780</a></p>
-</div>
-<div>
-<h4>Colombia</h4>
-<p>Carrera 13A No. 89-38, Oficina 336<br>Edificio Nippon Center, Bogotá</p>
-<p style="margin-top:8px"><a href="tel:+5715085890">+57 (1) 5085-890</a></p>
-<p style="margin-top:12px">
-<a href="https://www.linkedin.com/company/mobility-global/" target="_blank" rel="noopener">LinkedIn</a>
-<span style="color:var(--line);margin:0 6px">·</span>
-<a href="https://blog.mobilityglobal.net" target="_blank" rel="noopener">Blog</a>
-</p>
-</div>
-</div>
-<div class="f-bot">
-<p>© 2026 Mobility Global.</p>
+<div class="legal">
 <!-- Línea de crédito según las guías de marca de Apple: solo las marcas usadas en la página, en inglés y sin símbolos fuera de EE. UU. -->
-<p>Apple, Mac, MacBook Air, MacBook Pro, MacBook Neo, iMac, Mac mini, Mac Studio, iPad, iPad Air, iPad mini, iPad Pro, Apple Watch y AirPods son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones.</p>
-<p>Mobility Global es una empresa independiente. Este sitio no es operado, patrocinado ni avalado por Apple Inc. Microsoft 365, Microsoft Intune y Teams son marcas de Microsoft Corporation. Las demás marcas pertenecen a sus respectivos dueños.</p>
+<p>© 2026 Mobility Global. Apple, Mac, MacBook Air, MacBook Pro, MacBook Neo, iMac, Mac mini, Mac Studio, iPad, iPad Air, iPad mini, iPad Pro, Apple Watch y AirPods son marcas comerciales de Apple Inc., registradas en EE. UU. y en otros países y regiones.</p>
+<p style="margin-top:8px">Mobility Global es una empresa independiente. Este sitio no es operado, patrocinado ni avalado por Apple Inc. Microsoft 365, Microsoft Intune y Teams son marcas de Microsoft Corporation. Las demás marcas pertenecen a sus respectivos dueños. Fotografías de uso libre (Unsplash).</p>
 </div>
-</div>
-</footer>
+</div></footer>
+
+<script>
+/* Pestañas de "Por qué Mac y iPad" */
+(function(){
+  var T=[
+   {h:"Mac y iPad trabajan como un solo sistema.",p:"Copia un texto en la Mac y pégalo en el iPad. Usa el iPad como segunda pantalla o comparte una presentación a la sala sin cables. Tu gente aprende una vez y lo usa en todos sus equipos.",img:"img/equipo.jpg",alt:"Equipo de trabajo con computadoras portátiles Mac"},
+   {h:"Seguro desde el primer día.",p:"Disco cifrado, contraseñas, protección contra malware y borrado remoto si un equipo se pierde. Lo dejamos configurado y documentado antes de entregar.",img:"img/ipad.jpg",alt:"Mano sosteniendo un iPad"},
+   {h:"Menos trabajo para TI, más tiempo para tu gente.",p:"La persona abre la caja, inicia sesión y encuentra su correo y sus apps. TI controla altas, bajas y actualizaciones desde un solo lugar, junto con los equipos Windows.",img:"img/mac-escritorio.jpg",alt:"Computadora portátil Mac sobre un escritorio"}
+  ];
+  var pane=document.getElementById('pane'),tabs=document.querySelectorAll('.tabs button');
+  function show(i){
+    for(var j=0;j<tabs.length;j++) tabs[j].setAttribute('aria-selected', i===j);
+    var t=T[i];
+    pane.innerHTML='<div class="split"><div><h3></h3><p class="lead"></p></div><div class="ph"><img loading="lazy" alt=""></div></div>';
+    pane.querySelector('h3').textContent=t.h;
+    pane.querySelector('p').textContent=t.p;
+    var im=pane.querySelector('img'); im.src=t.img; im.alt=t.alt;
+    if (i>0 && typeof gtag==='function') gtag('event','pestana_por_que',{event_category:'engagement',event_label:tabs[i].textContent});
+  }
+  for(var k=0;k<tabs.length;k++) (function(n){ tabs[n].onclick=function(){ show(n); }; })(k);
+  show(0);
+})();
+</script>
 
 <!-- ================= WHATSAPP ================= -->
 <aside id="mgWa" aria-label="Contacto por WhatsApp">
@@ -898,7 +781,7 @@ function setPais(p, manual){
   document.getElementById('fldOtroPais').classList.toggle('hidden', p!=='OT');
   var f = p==='MX' ? 'Facturación CFDI' : (p==='CO' ? 'Facturación DIAN' : 'Cotización en USD');
   document.getElementById('tFact').textContent = f;
-  document.getElementById('tFact2').textContent = p==='MX' ? 'CFDI' : (p==='CO' ? 'DIAN' : 'según tu país');
+  document.getElementById('tFact2').textContent = p==='MX' ? 'CFDI' : (p==='CO' ? 'electrónica DIAN' : 'según tu país');
   /* Zoho asigna por País = "México" / "Colombia". Para otros países se manda el nombre que escriba el visitante. */
   document.getElementById('zoho_country').value = NOMBRE_PAIS[p] || mgOtroPais() || 'Otro';
   document.getElementById('zoho_lead_source').value = MG_FUENTES.form[p];
