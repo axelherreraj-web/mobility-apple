@@ -1306,6 +1306,191 @@ setPais(MG_DETECCION.pais, false);
 document.getElementById('lead_otro_pais').addEventListener('input', function(){ if (pais==='OT') document.getElementById('zoho_country').value = mgOtroPais() || 'Otro'; });
 </script>
 
+<!-- ================= ASISTENTE (Microsoft Copilot Studio, el mismo agente de las landings de Jabra) ================= -->
+<style>
+#mgBot{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;background:none}
+#mgBotPanel{display:none;width:min(92vw,380px);height:min(70vh,560px);background:var(--surface);
+border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px -12px rgba(0,0,0,.7)}
+#mgBotPanel.on{display:block}
+#mgBotHead{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 14px;
+background:var(--surface2);border-bottom:1px solid var(--line)}
+#mgBotHead b{display:block;font-size:.8rem;font-weight:680;color:var(--txt)}
+#mgBotHead small{display:block;font-size:.68rem;color:var(--accent-txt)}
+#mgBotHead button{background:none;border:0;color:var(--dim);font-size:1rem;cursor:pointer;padding:6px;line-height:1}
+#mgBotHead button:hover{color:var(--txt)}
+#mgBotFrame{width:100%;height:calc(100% - 52px);border:0;display:block;background:#fff}
+#mgBotTeaser{display:none;max-width:262px;position:relative;background:var(--surface);border:1px solid var(--line);
+border-radius:14px;border-bottom-right-radius:5px;padding:13px 15px;cursor:pointer;
+box-shadow:0 18px 44px -12px rgba(0,0,0,.65);opacity:0;transform:translateY(8px);transition:opacity .28s,transform .28s}
+#mgBotTeaser.on{display:block}
+#mgBotTeaser.vis{opacity:1;transform:none}
+#mgBotTeaser:hover{border-color:var(--accent)}
+#mgBotTeaser p{font-size:.79rem;color:var(--txt);line-height:1.45;padding-right:14px;margin:0}
+#mgBotTeaser .cta{font-size:.68rem;color:var(--accent-txt);font-weight:680;margin-top:7px}
+#mgBotTeaser .x{position:absolute;top:5px;right:8px;background:none;border:0;color:var(--dim);font-size:.72rem;cursor:pointer;line-height:1;padding:3px}
+#mgBotBtn{display:flex;align-items:center;gap:10px;background:var(--accent);color:#07171c;border:0;
+border-radius:999px;padding:11px 17px 11px 14px;cursor:pointer;font-family:inherit;
+box-shadow:0 0 0 2px rgba(134,196,64,.35),0 20px 44px -12px rgba(0,0,0,.6);transition:transform .18s}
+#mgBotBtn:hover{transform:scale(1.04)}
+#mgBotBtn .t{text-align:left;line-height:1.2}
+#mgBotBtn .t b{display:block;font-size:.76rem;font-weight:740;white-space:nowrap}
+#mgBotBtn .t span{display:block;font-size:.66rem;opacity:.78;white-space:nowrap}
+@media(max-width:600px){#mgBot{right:14px;bottom:14px}#mgBotBtn .t span{display:none}}
+@media(prefers-reduced-motion:reduce){#mgBotTeaser,#mgBotBtn{transition:none}}
+</style>
+
+<aside id="mgBot" class="dark" aria-label="Asistente de Mobility Global">
+  <div id="mgBotPanel" role="dialog" aria-label="Asistente de Mobility Global">
+    <div id="mgBotHead">
+      <div>
+        <b>Asistente de Mobility Global</b>
+        <small>&#9679; Respuesta inmediata &middot; 24/7</small>
+      </div>
+      <button type="button" onclick="mgBotToggle()" aria-label="Cerrar el asistente">&#10005;</button>
+    </div>
+    <iframe id="mgBotFrame" src="" title="Asistente de Mobility Global"></iframe>
+  </div>
+
+  <div id="mgBotTeaser" onclick="mgBotDesdeTeaser()">
+    <button type="button" class="x" onclick="mgBotCerrarTeaser(event)" aria-label="Cerrar sugerencia">&#10005;</button>
+    <p id="mgBotTeaserTxt"></p>
+    <div class="cta">Preguntar al asistente &rarr;</div>
+  </div>
+
+  <button type="button" id="mgBotBtn" onclick="mgBotToggle()" title="Asistente de Mobility Global">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.05 21.5a.75.75 0 0 0 .95.95l4.332-1.388A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm-3.5 9.5h7a1 1 0 1 1 0 2h-7a1 1 0 1 1 0-2zm0-3.5h7a1 1 0 1 1 0 2h-7a1 1 0 1 1 0-2z"/></svg>
+    <span class="t"><b>Asistente</b><span>&iquest;Qu&eacute; equipo me conviene?</span></span>
+  </button>
+</aside>
+
+<script>
+/* INTERRUPTOR: ponlo en false para ocultar el asistente sin borrar nada.
+   Útil mientras se confirma que el agente ya sabe responder sobre equipos Apple. */
+var MG_BOT_VISIBLE = true;
+var MG_BOT_URL = "https://copilotstudio.microsoft.com/environments/Default-c0a498ff-6273-4f39-9f54-758f0377ef48/bots/cr528_asistentevirtualmobilityglo_csRZnd/webchat?__version__=2&enableFileAttachment=false&cliAgent=true";
+
+if (!MG_BOT_VISIBLE) { document.getElementById('mgBot').style.display = 'none'; }
+
+/* Sin precarga: el agente solo se carga cuando el visitante lo abre,
+   para no iniciar una sesión de Copilot en cada visita. */
+function mgBotCargar(){
+  var f = document.getElementById('mgBotFrame');
+  if (f && !f.getAttribute('src')) f.src = MG_BOT_URL;
+}
+
+function mgBotToggle(){
+  var p = document.getElementById('mgBotPanel');
+  var abriendo = !p.classList.contains('on');
+  p.classList.toggle('on', abriendo);
+  if (abriendo){
+    try { sessionStorage.setItem('mg_teaser_shown','1'); } catch(e){}
+    mgBotOcultarTeaser();
+    if (typeof gtag === 'function') gtag('event','bot_open',{event_category:'engagement',event_label:'Asistente landing Apple'});
+    requestAnimationFrame(mgBotCargar);
+  }
+}
+
+/* ---------------- burbuja proactiva ---------------- */
+(function(){
+  var K_MOSTRADA = 'mg_teaser_shown', K_CERRADA = 'mg_teaser_dismissed';
+  var RETRASO_MIN = 10000, GUARDA_TECLEO = 5000, AUTO_OCULTA = 15000;
+  var teaser = document.getElementById('mgBotTeaser');
+  var txt = document.getElementById('mgBotTeaserTxt');
+  var cargada = Date.now(), ultimaTecla = 0, yaSalio = false, temporizador = null;
+
+  window.mgBotOcultarTeaser = function(){
+    clearTimeout(temporizador);
+    teaser.classList.remove('vis');
+    setTimeout(function(){ teaser.classList.remove('on'); }, 300);
+  };
+  window.mgBotCerrarTeaser = function(ev){
+    ev.stopPropagation();
+    try { sessionStorage.setItem(K_CERRADA,'1'); } catch(e){}
+    if (typeof gtag === 'function') gtag('event','bot_teaser_dismissed',{event_category:'engagement'});
+    mgBotOcultarTeaser();
+  };
+  window.mgBotDesdeTeaser = function(){
+    if (typeof gtag === 'function') gtag('event','bot_teaser_click',{event_category:'engagement'});
+    mgBotOcultarTeaser();
+    mgBotToggle();
+  };
+
+  function bloqueada(){
+    if (yaSalio || !MG_BOT_VISIBLE) return true;
+    if (document.getElementById('mgBotPanel').classList.contains('on')) return true;
+    if (document.getElementById('mgWaModal').classList.contains('on')) return true;
+    if (Date.now() - cargada < RETRASO_MIN) return true;
+    try { if (sessionStorage.getItem(K_MOSTRADA) || sessionStorage.getItem(K_CERRADA)) return true; } catch(e){}
+    return false;
+  }
+
+  function mostrar(mensaje, permiteFoco){
+    if (bloqueada()) return;
+    if (Date.now() - ultimaTecla < GUARDA_TECLEO) return;
+    var act = document.activeElement;
+    var enForm = act && (act.tagName === 'INPUT' || act.tagName === 'TEXTAREA' || act.tagName === 'SELECT');
+    if (enForm && !permiteFoco) return;
+    yaSalio = true;
+    try { sessionStorage.setItem(K_MOSTRADA,'1'); } catch(e){}
+    txt.textContent = mensaje;
+    teaser.classList.add('on');
+    requestAnimationFrame(function(){ teaser.classList.add('vis'); });
+    if (typeof gtag === 'function') gtag('event','bot_teaser_shown',{event_category:'engagement',event_label:mensaje});
+    temporizador = setTimeout(mgBotOcultarTeaser, AUTO_OCULTA);
+  }
+
+  document.addEventListener('keydown', function(){ ultimaTecla = Date.now(); }, {passive:true});
+
+  /* 1. atorado en la solicitud sin llegar al resultado */
+  var cfgEl = document.getElementById('configurador');
+  if (cfgEl && 'IntersectionObserver' in window){
+    var dentro = 0, tic = null;
+    new IntersectionObserver(function(e){
+      clearInterval(tic);
+      if (e[0].isIntersecting){
+        tic = setInterval(function(){
+          dentro += 1000;
+          var terminado = document.querySelector('.cfg-step[data-step="5"]:not(.hidden)');
+          if (dentro >= 25000 && !terminado){
+            clearInterval(tic);
+            mostrar('¿No sabes qué equipo le toca a cada puesto? Cuéntame qué hace tu gente y te oriento.');
+          }
+        }, 1000);
+      }
+    }, {threshold:.4}).observe(cfgEl);
+  }
+
+  /* 2. pasó la mitad de la página */
+  var disparoScroll = false;
+  window.addEventListener('scroll', function(){
+    if (disparoScroll) return;
+    var h = document.documentElement;
+    if (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) > .5){
+      disparoScroll = true;
+      mostrar('¿Dudas sobre entrega, facturación o configuración? Te las resuelvo aquí.');
+    }
+  }, {passive:true});
+
+  /* 3. formulario abierto y abandonado */
+  var form = document.getElementById('cotizar');
+  if (form){
+    var reloj = null;
+    form.addEventListener('focusin', function(){
+      clearTimeout(reloj);
+      reloj = setTimeout(function(){ mostrar('¿Alguna duda antes de enviar? Te la contesto aquí mismo.', true); }, 20000);
+    });
+    form.addEventListener('submit', function(){ clearTimeout(reloj); });
+  }
+
+  /* 4. intención de salida, solo en escritorio */
+  if (window.innerWidth > 1024){
+    document.addEventListener('mouseout', function(e){
+      if (!e.relatedTarget && e.clientY <= 0) mostrar('¿Te ayudo a elegir el equipo antes de que te vayas?');
+    });
+  }
+})();
+</script>
+
 <!-- Google Ads -> Zoho CRM: guarda el GCLID del clic y llena el campo zc_gad del formulario -->
 <script src="https://crm.zoho.com/crm/javascript/zcga.js"></script>
 </body>
